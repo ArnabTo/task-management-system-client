@@ -1,27 +1,31 @@
-import { Button, Card, Checkbox, Label, TextInput } from 'flowbite-react';
+import { Button, Card, Label, TextInput } from 'flowbite-react';
 import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../Provider/AuthProvider';
 import toast, { Toaster } from 'react-hot-toast';
+import { Link } from 'react-router-dom';
 const Register = () => {
 
-  const { signUp, user } = useContext(AuthContext)
-  
+  const { signUp, user, updateUser } = useContext(AuthContext)
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm()
-  console.log(user)
+  
+  // console.log(user)
   
   const onSubmit = (data) => {
     console.log(data)
     signUp(data.email, data.password)
       .then(res => {
-        console.log(res)
+        // console.log(res)
+        updateUser(data.displayName, data.photoURL)
         if(user){
           toast.success('Successfully Registered!')
         }
+
       })
   }
   return (
@@ -52,8 +56,9 @@ const Register = () => {
             </div>
             <TextInput id="password1" {...register('password')} type="password" required />
           </div>
-          <Button type="submit">Sign Up</Button>
+          <Button type="submit">Sign In</Button>
         </form>
+        <Link className='text-black' to='/login'>Already a user? Sign In</Link>
       </Card>
       <Toaster
         position="top-right"
