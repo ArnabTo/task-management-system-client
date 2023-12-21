@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
 import { createContext, useState } from "react";
 import { useEffect } from "react";
 import app from "../firebase.init";
@@ -18,6 +18,15 @@ const AuthProvider = ({ children }) => {
     const signIn =(email, password)=>{
         return signInWithEmailAndPassword(auth, email, password)
     }
+    const signOutUser = ()=>{
+        setLoader(true)
+        return signOut(auth)
+        .then(()=>{
+            localStorage.removeItem('jwttoken')
+        }).finally(()=>{
+            setLoader(false)
+        })
+    }
     const updateUser=(name, photo)=>{
         return updateProfile(auth.currentUser, {
             displayName: name, photoURL: photo
@@ -32,7 +41,7 @@ const AuthProvider = ({ children }) => {
             return unSubScribe()}
     },[auth])
 
-    const authFunc = {user, signUp, signIn, loader, updateUser}
+    const authFunc = {user, signUp, signIn, signOutUser, loader, updateUser}
     return (
         <AuthContext.Provider value={authFunc}>
             {children}

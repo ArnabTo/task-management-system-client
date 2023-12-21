@@ -1,0 +1,12 @@
+#customBG{
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(0, 0, 0, 0.75);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.186);
+}
+
+ul.mt-4.flex.flex-col.md\:mt-0.md\:flex-row.md\:space-x-8.md\:text-sm.md\:font-medium {
+    /* justify-content: center; */
+    align-items: center;
+}

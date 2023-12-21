@@ -30,35 +30,35 @@ const Register = () => {
   }
   return (
     <div className='max-w-6xl mx-auto'>
-      <Card className="max-w-sm m-auto">
+      <Card className="max-w-sm m-auto" id='customBG'>
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
           <div>
             <div className="mb-2 block">
-              <Label htmlFor="name" value="Your Name" />
+              <Label htmlFor="name" value="Your Name" className='text-white' />
             </div>
             <TextInput id="name" type="text" {...register('displayName')} placeholder="name" required />
           </div>
           <div>
             <div className="mb-2 block">
-              <Label htmlFor="image" value="Your Image" />
+              <Label htmlFor="image" value="Your Image"  className='text-white' />
             </div>
             <TextInput id="image" type="text" {...register('photoURL')} placeholder="photoURL" required />
           </div>
           <div>
             <div className="mb-2 block">
-              <Label htmlFor="email1" value="Your email" />
+              <Label htmlFor="email1" value="Your email"   className='text-white'/>
             </div>
             <TextInput id="email1" type="email" {...register('email')} placeholder="name@flowbite.com" required />
           </div>
           <div>
             <div className="mb-2 block">
-              <Label htmlFor="password1" value="Your password" />
+              <Label htmlFor="password" value="Your password"   className='text-white'/>
             </div>
-            <TextInput id="password1" {...register('password')} type="password" required />
+            <TextInput id="password" {...register('password')} type="password" required />
           </div>
           <Button type="submit">Sign In</Button>
         </form>
-        <Link className='text-black' to='/login'>Already a user? Sign In</Link>
+        <Link className='text-white' to='/login'>Already a user? Sign In</Link>
       </Card>
       <Toaster
         position="top-right"
