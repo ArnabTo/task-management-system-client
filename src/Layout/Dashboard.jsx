@@ -22,6 +22,11 @@ const Dashboard = () => {
                                     Previous Task
                                 </Sidebar.Item>
                             </Link>
+                            <Link to='/dash/manage'>
+                                <Sidebar.Item href="#" className='text-white hover:text-black' icon={HiChartPie}>
+                                    Manage Task
+                                </Sidebar.Item>
+                            </Link>
                         </Sidebar.ItemGroup>
                         <hr></hr>
                         <Sidebar.ItemGroup>

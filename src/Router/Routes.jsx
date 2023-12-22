@@ -1,6 +1,7 @@
 import {createBrowserRouter} from "react-router-dom";
 import App from "../App";
 import CreateTask from "../Components/DashItems/Create/CreateTask";
+import ManageTask from "../Components/DashItems/ManageTask/ManageTask";
 import PrevTask from "../Components/DashItems/PrevTask/PrevTask";
 import Dashboard from "../Layout/Dashboard";
 import Home from "../Pages/Home/Home";
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
         {
           path:'prev',
           element: <PrivateRoutes><PrevTask/></PrivateRoutes>
+        },
+        {
+          path:'manage',
+          element: <PrivateRoutes><ManageTask/></PrivateRoutes>
         },
       ]
     },
