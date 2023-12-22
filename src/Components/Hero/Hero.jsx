@@ -16,15 +16,9 @@ const Hero = () => {
                     <p className="md:text-center mb-5">
                         Discover a new level of efficiency with [Your Task Management System Name]. Our intuitive platform simplifies task management, allowing you to effortlessly organize projects, assign tasks, and monitor progress in real-time. Experience seamless collaboration, smart task allocation, and powerful analytics—all in one centralized hub. Whether you're a startup or a large enterprise, [Your Task Management System Name] is your key to streamlined workflow and success. Join us and elevate your productivity today.
                     </p>
-                    {
-                        user ?
-                            <Link className="md:flex justify-center" to='/dash'>
-                                <button className="bg-white text-black px-12 py-2 rounded border-white border-2 hover:bg-transparent hover:text-white transition-all">Let's Explore</button>
-                            </Link> :
-                            <Link className="md:flex justify-center" to='/login'>
-                                <button className="bg-white text-black px-12 py-2 rounded border-white border-2 hover:bg-transparent hover:text-white transition-all">Let's Explore</button>
-                            </Link>
-                    }
+                    <Link className="md:flex justify-center" to='/dash'>
+                        <button className="bg-white text-black px-12 py-2 rounded border-white border-2 hover:bg-transparent hover:text-white transition-all">Let's Explore</button>
+                    </Link>
                 </div>
             </div>
         </Parallax>
