@@ -25,7 +25,7 @@ const CreateTask = () => {
             status: 'todo'
         }
         // console.log(taskData)
-        axios.post('http://localhost:5000/tasks', taskData)
+        axios.post('https://task-management-server-henna-theta.vercel.app/tasks', taskData)
             .then(res => {
                 if (res.data === 'succeed') {
                     toast.success('Task Created')
@@ -41,19 +41,19 @@ const CreateTask = () => {
             <div className="max-w-md mx-auto">
 
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <div>
+                    <div data-aos="fade-right">
                         <div className="mb-2 block">
                             <Label htmlFor="title" value="Your email" className='text-white' />
                         </div>
                         <TextInput id="Title" type="Text" {...register('title')} placeholder="title" required />
                     </div>
-                    <div>
+                    <div data-aos="fade-right">
                         <div className="mb-2 block">
                             <Label htmlFor="date" value="Date" className='text-white' />
                         </div>
                         <TextInput id="date" type="date" {...register('date')} required />
                     </div>
-                    <div className="max-w-md">
+                    <div className="max-w-md" data-aos="fade-right">
                         <div className="mb-2 block">
                             <Label htmlFor="level" value="Priority" />
                         </div>
@@ -63,13 +63,13 @@ const CreateTask = () => {
                             <option>low</option>
                         </Select>
                     </div>
-                    <div>
+                    <div data-aos="fade-right">
                         <div className="mb-2 block">
                             <Label htmlFor="comment" value="Your message" className='text-white' />
                         </div>
                         <Textarea id="comment" {...register('task')} placeholder="Create your todo..." required rows={4} />
                     </div>
-                    <button type='submit' className='bg-white text-black my-4 rounded px-8 py-2 uppercase'>Add</button>
+                    <button data-aos="fade-right" type='submit' className='bg-white text-black my-4 rounded px-8 py-2 uppercase'>Add</button>
                 </form>
             </div>
             <Toaster

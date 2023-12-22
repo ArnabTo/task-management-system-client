@@ -7,7 +7,7 @@ const TodoTask = ({ todo }) => {
 
 
     const handleFinish = (id) => {
-        axios.patch(`http://localhost:5000/taskupdate/${id}`)
+        axios.patch(`https://task-management-server-henna-theta.vercel.app/taskupdate/${id}`)
             .then(res => {
                 if (res.data.message === 'succeed') {
                   toast.success('Task status updated!')
@@ -16,7 +16,7 @@ const TodoTask = ({ todo }) => {
             })
     }
     return (
-        <Card className="max-w-sm" id="customBG">
+        <Card className="max-w-sm" id="customBG" data-aos="flip-left">
             <div>
                 <h5 className="text-2xl font-bold tracking-tight text-white">Title - {title}</h5>
                 <p>Task - {taskD}</p>

@@ -9,11 +9,11 @@ const PrevTask = () => {
     const [todoData, setTodoData] = useState([]);
     const [finishedData, setFinishedData] = useState([]);
     useEffect(() => {
-        axios.get('http://localhost:5000/todotask')
+        axios.get('https://task-management-server-henna-theta.vercel.app/todotask')
             .then(res => setTodoData(res.data))
     }, [])
     useEffect(() => {
-        axios.get('http://localhost:5000/finishedtask')
+        axios.get('https://task-management-server-henna-theta.vercel.app/finishedtask')
             .then(res => setFinishedData(res.data))
     }, [])
 
@@ -39,7 +39,7 @@ const PrevTask = () => {
                     <div className="grid grid-cols-1 gap-4">
                         {
                             finishedData.map(finished => 
-                                <Card className="max-w-sm" id="customBG" key={finished._id}>
+                                <Card className="max-w-sm" id="customBG" key={finished._id} data-aos="flip-right">
                                 <div>
                                     <h5 className="text-2xl font-bold tracking-tight text-white">{finished.taskD}</h5>
                                     <p className="font-normal text-white">{finished.date}</p>

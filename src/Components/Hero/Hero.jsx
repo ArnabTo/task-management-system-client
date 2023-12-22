@@ -12,8 +12,8 @@ const Hero = () => {
             className='h-[80vh]'>
             <div className="max-w-6xl mx-auto">
                 <div className="pt-[25%] mx-4">
-                    <h2 className=" md:text-center text-3xl font-extrabold mb-4">Elevate Your Productivity with ExecuFlow</h2>
-                    <p className="md:text-center mb-5">
+                    <h2 className=" md:text-center text-3xl font-extrabold mb-4" data-aos="zoom-in"  data-aos-duration="1000">Elevate Your Productivity with ExecuFlow</h2>
+                    <p className="md:text-center mb-5" data-aos="zoom-in"  data-aos-duration="2000">
                         Discover a new level of efficiency with [Your Task Management System Name]. Our intuitive platform simplifies task management, allowing you to effortlessly organize projects, assign tasks, and monitor progress in real-time. Experience seamless collaboration, smart task allocation, and powerful analytics—all in one centralized hub. Whether you're a startup or a large enterprise, [Your Task Management System Name] is your key to streamlined workflow and success. Join us and elevate your productivity today.
                     </p>
                     <Link className="md:flex justify-center" to='/dash'>

@@ -9,7 +9,7 @@ const Dashboard = () => {
             <div>
                 <Sidebar aria-label="Sidebar with logo branding" className='w-full bg-black'>
                     <Sidebar.Logo href="#" img="/favicon.svg" imgAlt="Flowbite logo">
-                        Flowbite
+                        ExecuFlow
                     </Sidebar.Logo>
                     <Sidebar.Items>
                         <Sidebar.ItemGroup>
@@ -30,7 +30,7 @@ const Dashboard = () => {
                             <Link to='/dash/manage'>
                                 <Sidebar.Item href="#" className='text-white hover:text-black'>
                                     <span className='flex gap-2'>
-                                        <Settings2 />Manage Tasks
+                                    <Settings2 />Manage Tasks
                                     </span>
                                 </Sidebar.Item>
                             </Link>
@@ -38,10 +38,10 @@ const Dashboard = () => {
                         <hr></hr>
                         <Sidebar.ItemGroup>
                             <Link to='/'>
-                                <Sidebar.Item href="#" className='text-white hover:text-black'>
-                                    <span className='flex gap-2'>
-                                        <Home />Home
-                                    </span>
+                                <Sidebar.Item href="#" className='text-white hover:text-black' >
+                                <span className='flex gap-2'>
+                                <Home/>Home
+                                </span>
                                 </Sidebar.Item>
                             </Link>
                         </Sidebar.ItemGroup>

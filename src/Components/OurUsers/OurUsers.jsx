@@ -7,7 +7,7 @@ const OurUsers = () => {
 
 
     useEffect(() => {
-        axios.get('http://localhost:5000/users')
+        axios.get('https://task-management-server-henna-theta.vercel.app/users')
             .then(res => setUserData(res.data))
     }, [])
     console.log(userData)
@@ -17,7 +17,7 @@ const OurUsers = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 {
                     userData.map(data =>
-                        <Card href="#" className="max-w-sm" key={data._id} id='customBG'>
+                        <Card href="#" className="max-w-sm" key={data._id} id='customBG' data-aos="zoom-in-up">
                             <div className="flex justify-between">
                                 <Avatar img={data.image} alt="avatar of Jese" rounded />
 
