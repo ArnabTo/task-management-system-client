@@ -2,12 +2,14 @@ import { Avatar, Dropdown, Navbar } from 'flowbite-react';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Provider/AuthProvider';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Nav = () => {
     const { user, signOutUser } = useContext(AuthContext);
 
     const handleSignOut = () => {
         signOutUser()
+        toast.success('Loged Out!')
     }
     return (
         <div className='max-w-6xl mx-auto'>
@@ -49,6 +51,10 @@ const Nav = () => {
                     }
                 </Navbar.Collapse>
             </Navbar>
+            <Toaster
+            position="top-right"
+            reverseOrder={false}
+          />
         </div>
     );
 };

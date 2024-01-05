@@ -3,11 +3,12 @@ import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../Provider/AuthProvider';
 import toast, { Toaster } from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../../App.css'
 const Login = () => {
     const { signIn, user } = useContext(AuthContext)
-   
+  
+    const navigate = useNavigate();
     const {
         register,
         handleSubmit,
@@ -17,13 +18,11 @@ const Login = () => {
       // console.log(user)
       
       const onSubmit = (data) => {
-        console.log(data)
+        // console.log(data)
         signIn(data.email, data.password)
-          .then(res => {
-            // console.log(res)
-            if(user){
-              toast.success('Successfully Loged In!')
-            }
+        .then(res =>{
+              toast.success('Logged In')
+              navigate('/dash')
           })
       }
  

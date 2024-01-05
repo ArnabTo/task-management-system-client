@@ -10,7 +10,7 @@ const OurUsers = () => {
         axios.get('https://task-management-server-henna-theta.vercel.app/users')
             .then(res => setUserData(res.data))
     }, [])
-    console.log(userData)
+    // console.log(userData)
     return (
         <div className="max-w-6xl mx-auto my-12">
             <h2 className="text-center text-3xl font-extrabold my-8">Our Users</h2>

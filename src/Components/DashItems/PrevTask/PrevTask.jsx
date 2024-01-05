@@ -31,8 +31,7 @@ const PrevTask = () => {
                 </div>
                 <div>
                     <h3 className="text-2xl font-bold mb-4">On-Going</h3>
-
-
+                    <div></div>
                 </div>
                 <div>
                     <h3 className="text-2xl font-bold mb-4">Finished Task</h3>
