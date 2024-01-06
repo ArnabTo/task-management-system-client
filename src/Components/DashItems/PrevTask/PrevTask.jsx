@@ -5,9 +5,21 @@ import { useDrag, useDrop } from "react-dnd";
 import TodoTask from "./todoTask";
 
 const PrevTask = () => {
-
+    const [onGoing, setOngoing] = useState([]);
     const [todoData, setTodoData] = useState([]);
     const [finishedData, setFinishedData] = useState([]);
+
+    const [{isOver}, drop] = useDrop(()=>({
+        accept: "div",
+        drop: (item) => addTaskToOngoing(item.id),
+        collect: (monitor) => ({
+            isOver: !!monitor.isOver(),
+        }),
+    }))
+
+    const addTaskToOngoing = (id) =>{
+       console.log(id)
+    }
     useEffect(() => {
         axios.get('https://task-management-server-henna-theta.vercel.app/todotask')
             .then(res => setTodoData(res.data))
@@ -31,20 +43,21 @@ const PrevTask = () => {
                 </div>
                 <div>
                     <h3 className="text-2xl font-bold mb-4">On-Going</h3>
-                    <div></div>
+                    <div ref={drop}>
+                    </div>
                 </div>
                 <div>
                     <h3 className="text-2xl font-bold mb-4">Finished Task</h3>
                     <div className="grid grid-cols-1 gap-4">
                         {
-                            finishedData.map(finished => 
+                            finishedData.map(finished =>
                                 <Card className="max-w-sm" id="customBG" key={finished._id} data-aos="flip-right">
-                                <div>
-                                    <h5 className="text-2xl font-bold tracking-tight text-white">{finished.taskD}</h5>
-                                    <p className="font-normal text-white">{finished.date}</p>
-                                </div>
-                                <button>Finished</button>
-                            </Card>)
+                                    <div>
+                                        <h5 className="text-2xl font-bold tracking-tight text-white">{finished.taskD}</h5>
+                                        <p className="font-normal text-white">{finished.date}</p>
+                                    </div>
+                                    <button>Finished</button>
+                                </Card>)
                         }
                     </div>
                 </div>
