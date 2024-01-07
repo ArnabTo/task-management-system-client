@@ -9,7 +9,7 @@ const TodoTask = ({ todo }) => {
     const { _id, taskD, date, priority, title } = todo;
 
     const [{ isDragging }, drag] = useDrag(() => ({
-        type: 'Card',
+        type: 'div',
         item:{id: _id},
         collect: (monitor) => ({
             isDragging: !!monitor.isDragging(),

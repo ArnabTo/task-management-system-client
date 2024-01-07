@@ -1,33 +1,50 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Avatar, Card } from 'flowbite-react';
+import { Card } from 'flowbite-react';
 import { useDrag, useDrop } from "react-dnd";
 import TodoTask from "./todoTask";
+import { useQuery } from "@tanstack/react-query";
+import useTodoTask from "../../../hooks/useTodoTask";
+import useOngoingTask from "../../../hooks/useOngoingTask";
 
 const PrevTask = () => {
-    const [onGoing, setOngoing] = useState([]);
-    const [todoData, setTodoData] = useState([]);
-    const [finishedData, setFinishedData] = useState([]);
+    const [todos, refetch] = useTodoTask();
+    // console.log(todos)
+    const { ongoingTask, onGoingRefetch } = useOngoingTask();
 
-    const [{isOver}, drop] = useDrop(()=>({
-        accept: "div",
-        drop: (item) => addTaskToOngoing(item.id),
+    const [finishedData, setFinishedData] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    const [{ isOver }, drop] = useDrop(() => ({
+        accept: 'div',
+        drop: (task) => addTaskToOngoing(task.id),
         collect: (monitor) => ({
             isOver: !!monitor.isOver(),
         }),
     }))
 
-    const addTaskToOngoing = (id) =>{
-       console.log(id)
+    const addTaskToOngoing = async (id) => {
+       await axios.patch(`http://localhost:5000/ongointask/${id}`)
+      
     }
     useEffect(() => {
-        axios.get('https://task-management-server-henna-theta.vercel.app/todotask')
-            .then(res => setTodoData(res.data))
+        axios.get('https://task-management-server-henna-theta.vercel.app/finishedtask')
+            .then(res => {
+                setFinishedData(res.data)
+                setLoading(false)
+            })
     }, [])
     useEffect(() => {
-        axios.get('https://task-management-server-henna-theta.vercel.app/finishedtask')
-            .then(res => setFinishedData(res.data))
-    }, [])
+        if (todos) {
+            refetch();
+        }
+    })
+    useEffect(()=>{
+        if(ongoingTask){
+            onGoingRefetch();
+        }
+    })
+
 
     return (
         <div className="mx-4">
@@ -37,14 +54,22 @@ const PrevTask = () => {
                     <h3 className="text-2xl font-bold mb-4">To-Do</h3>
                     <div className="grid grid-cols-1 gap-4">
                         {
-                            todoData.map(todo => <TodoTask key={todo._id} todo={todo}></TodoTask>)
+                            todos.map(todo => <TodoTask key={todo._id} todo={todo}></TodoTask>)
                         }
                     </div>
                 </div>
-                <div>
-                    <h3 className="text-2xl font-bold mb-4">On-Going</h3>
-                    <div ref={drop}>
-                    </div>
+                <div ref={drop}>
+                    <h3 className="text-2xl font-bold mb-4">On Going</h3>
+                    {
+                        ongoingTask.map(ongoingTask =>
+                            <Card className="max-w-sm" id="customBG" key={ongoingTask._id} data-aos="flip-right">
+                                <div>
+                                    <h5 className="text-2xl font-bold tracking-tight text-white">{ongoingTask.taskD}</h5>
+                                    <p className="font-normal text-white">{ongoingTask.date}</p>
+                                </div>
+                                <button>Finished</button>
+                            </Card>)
+                    }
                 </div>
                 <div>
                     <h3 className="text-2xl font-bold mb-4">Finished Task</h3>
